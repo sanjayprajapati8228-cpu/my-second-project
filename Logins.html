@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>login</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<style>
+		body {
+			margin: 0;
+			font-family: Georgia, serif;
+			background: linear-gradient(135deg, #e6f7ff, #f0f9f9);
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+		}
+
+		/* Main Container */
+		.main-container {
+			display: grid;
+			gap: 50px;
+			padding: 150px 100px;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			justify-content: center;
+			align-items: center;
+		}
+
+		/* Card Style */
+		.container {
+			background: #ffffff;
+			border-radius: 20px;
+			padding: 30px;
+			text-align: center;
+			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.container:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+		}
+
+		/* Images */
+		.container img {
+			width: 180px;
+			height: 180px;
+			border-radius: 50%;
+			object-fit: cover;
+			margin-bottom: 20px;
+			background-color: #f0f9f9;
+			padding: 10px;
+		}
+
+		/* Button */
+		.container .btn {
+			background: #007bff;
+			color: #fff;
+			border: none;
+			padding: 12px 20px;
+			font-size: 16px;
+			border-radius: 8px;
+			transition: background 0.3s ease, transform 0.2s ease;
+		}
+
+		.container .btn:hover {
+			background: #0056b3;
+			transform: scale(1.05);
+		}
+	</style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hms-ui-consistency.css" />
+    <link rel="stylesheet" href="hms-theme.css" />
+    <link rel="stylesheet" href="css/buttons.css">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg hms-public-navbar sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="Index2.html">
+      <img src="logo.png" width="40" height="40" alt="Logo" />
+      <h2 class="hms-brand-title">
+        <span class="brand-hms">HMS</span> <span class="brand-auto">Automanager</span>
+      </h2>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="Index2.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="Doctors_Profile.php">Doctors</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="contect.php">Contact Us</a></li>
+        <li class="nav-item nav-item-login"><a class="nav-link active" href="Logins.html">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+	<div class="main-container">
+		<div class="container">
+			<img src="Patient.png">
+			<a href="UserLogin.php" class="btn-primary-action"><button class="btn btn-primary-action">Login as Patient</button></a>
+		</div>
+		<div class="container">
+			<img src="doctor.png">
+			<a href="Doctor_Login.php" class="btn-primary-action"><button class="btn btn-primary-action">Login as Doctor</button></a>
+		</div>
+		<div class="container">
+			<img src="Admin.jpg">
+			<a href="adminlogin.php" class="btn-primary-action"><button class="btn btn-primary-action">Login as Admin</button></a>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,150 @@
+/* Shared Admin Sidebar */
+.admin-mobile-topbar {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: linear-gradient(120deg, #072a43, #0e3b5f);
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1300;
+}
+
+.admin-mobile-topbar .menu-btn {
+    border: 0;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.admin-sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, #072a43, #062338);
+    color: #dce9f4;
+    padding: 24px 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 1200;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.16);
+    transition: transform 0.3s ease;
+}
+
+.admin-sidebar .sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 10px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.admin-sidebar .sidebar-header h3 {
+    margin: 0;
+    color: #fff;
+    letter-spacing: 0.3px;
+}
+
+.admin-sidebar .sidebar-menu {
+    list-style: none;
+    padding: 18px 0 0;
+    margin: 0;
+}
+
+.admin-sidebar .sidebar-menu li {
+    margin-bottom: 6px;
+}
+
+.admin-sidebar .sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 12px;
+    border-radius: 12px;
+    color: #dce9f4;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+/* Neutralize legacy page CSS icon margins so spacing is identical everywhere */
+.admin-sidebar .sidebar-menu a i {
+    margin-right: 0 !important;
+    width: 18px;
+    text-align: center;
+}
+
+.admin-sidebar .sidebar-menu a:hover,
+.admin-sidebar .sidebar-menu a.active {
+    background: rgba(255, 255, 255, 0.13);
+    color: #fff;
+}
+
+.admin-sidebar .has-submenu .dropdown-icon {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.admin-sidebar .has-submenu.open > a .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.admin-sidebar .submenu {
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 0 0 0 12px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+
+/* Override legacy page-level hover CSS so dropdowns only toggle by click */
+.admin-sidebar .has-submenu:hover .submenu {
+    max-height: 0;
+}
+
+.admin-sidebar .has-submenu.open .submenu,
+.admin-sidebar .submenu.submenu-open {
+    max-height: 220px;
+}
+
+.admin-sidebar .submenu a {
+    font-size: 0.92rem;
+    color: #bdd2e4;
+    padding: 9px 12px;
+}
+
+.main-content {
+    margin-left: 280px !important;
+    width: calc(100% - 280px) !important;
+    margin-top: 0 !important;
+}
+
+.sidebar,
+.mobile-topbar,
+.sidebar-toggle {
+    display: none !important;
+}
+
+@media (max-width: 991px) {
+    .admin-mobile-topbar {
+        display: flex;
+    }
+
+    .admin-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .admin-sidebar.show {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+}

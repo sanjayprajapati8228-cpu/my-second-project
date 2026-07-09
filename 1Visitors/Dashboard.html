@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vistor Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Georgia, serif;
+            margin: auto;
+            padding: 0;
+
+            display: flex;
+            background-color: #f4f7f6;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #002849;
+            /* Dark blue-grey */
+            color: #ecf0f1;
+            /* Light grey */
+            height: 100vh;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            /* Enable scrolling for long menus */
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #34495e;
+            /* Slightly lighter border */
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar-header h3 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #e67e22;
+            /* Orange accent */
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            position: relative;
+        }
+
+        .sidebar-menu li a {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .sidebar-menu li a:hover {
+            background-color: #34495e;
+            /* Darker on hover */
+            color: #ffffff;
+        }
+
+        .sidebar-menu li a i {
+            margin-right: 10px;
+            font-size: 1.1em;
+        }
+
+        /* Dropdown specific styles */
+        .has-submenu .dropdown-icon {
+            margin-left: auto;
+            /* Pushes the icon to the right */
+            transition: transform 0.3s ease;
+        }
+
+        .has-submenu:hover>a .dropdown-icon {
+            transform: rotate(180deg);
+            /* Rotate caret on hover */
+        }
+
+        .submenu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #34495e;
+            /* Slightly different background for submenu */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            /* Smooth transition for dropdown */
+            transform-origin: top;
+        }
+
+        .has-submenu:hover .submenu {
+            max-height: 200px;
+            /*Adjust based on content. Make it large enough to fit all items.
+    /* transition: max-height 0.5s ease-in; Different timing for opening */
+        }
+
+        .submenu li a {
+            padding: 10px 20px 10px 45px;
+            /* Indent submenu items */
+            font-size: 0.95em;
+            color: #bdc3c7;
+            /* Lighter color for submenu items */
+        }
+
+        .submenu li a:hover {
+            background-color: #2c3e50;
+            /* Darker on hover for submenu */
+            color: #ffffff;
+        }
+
+        /* Main content area */
+        .main-content {
+            margin-left: 570px;
+            /* Pushes main content to the right of the sidebar */
+            padding: 20px;
+            width: calc(100% - 250px);
+            box-sizing: border-box;
+        }
+    </style>
+    <link rel="stylesheet" href="../hms-ui-consistency.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../hms-ui-consistency.css" />
+    <link rel="stylesheet" href="../hms-theme.css" />
+    <link rel="stylesheet" href="../css/buttons.css" />
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <div class="sidebar-header">
+            <img src="../rmbg2.png" width="40" height="40" alt="Logo">
+            <h3>HMS </h3>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li class="has-submenu">
+
+            <li class="has-submenu">
+                <a href="#"><i class="fas fa-calendar-alt"></i> Appointments <i
+                        class="fas fa-caret-down dropdown-icon"></i></a>
+                <ul class="submenu">
+                    <li><a href="file:///D:/Projects/Hospital%20Management/home/appointment.html"
+                            onclick="loadPage(event, 'appointment.html')">New Appointment</a></li>
+                    <li><a href="#">View Appointments</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu">
+                <a href="#"><i class="fa fa-info-circle"></i> About Us </a>
+
+            </li>
+            <li><a href=""><i class="fa-solid fa-image"></i></i> Gallery</a></li>
+            <li><a href="#" class="btn-primary-action"><i class="fas fa-right-to-bracket"></i>Login</a>
+
+        </ul>
+    </div>
+
+    <div class="main  main-content" id="mainContent">
+        <!-- External page content will be loaded here -->
+    </div>
+    <script>
+        function loadPage(event, pageUrl) {
+            event.preventDefault();
+            fetch(pageUrl)
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('mainContent').innerHTML = html;
+                })
+                .catch(error => {
+                    document.getElementById('mainContent').innerHTML = "<p>Page not found.</p>";
+                    console.error("Error loading page:", error);
+                });
+        }
+    </script>
+
+
+</body>
+
+</html>
+
+
+
+
+

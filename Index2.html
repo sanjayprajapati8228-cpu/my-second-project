@@ -1,0 +1,362 @@
+﻿<?php
+	
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Hospital Automanager</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<style>
+		:root {
+			--bg: #f0f6fb;
+			--ink: #13384f;
+			--muted: #5d7c93;
+			--brand: #0c6e93;
+			--brand-dark: #084d69;
+			--panel: #ffffff;
+		}
+
+		body {
+			margin: 0;
+			font-family: 'Poppins', sans-serif;
+			background:
+				radial-gradient(circle at 10% 2%, #d7ecff 0%, transparent 35%),
+				radial-gradient(circle at 92% 96%, #d5f1ff 0%, transparent 26%),
+				var(--bg);
+			color: var(--ink);
+			overflow-x: hidden;
+		}
+
+		/* --- Carousel / Slideshow Styling --- */
+		#mainCarousel {
+			border-bottom: 1px solid #d2e5f3;
+			box-shadow: 0 16px 40px rgba(11, 62, 92, 0.14);
+		}
+
+		.carousel-item img {
+			height: 580px;
+			object-fit: cover;
+		}
+
+		/* Smooth fade animation between slides */
+		.carousel-fade .carousel-item {
+			opacity: 0;
+			transition: opacity 1.1s ease-in-out;
+		}
+
+		.carousel-fade .carousel-item.active {
+			opacity: 1;
+		}
+
+		.carousel-caption {
+			background: linear-gradient(140deg, rgba(7, 33, 49, 0.78), rgba(8, 82, 110, 0.68));
+			border: 1px solid rgba(255, 255, 255, 0.26);
+			border-radius: 14px;
+			padding: 24px;
+			bottom: 12%;
+			max-width: 640px;
+			margin: 0 auto;
+		}
+
+		.carousel-caption h3 {
+			font-size: clamp(1.2rem, 2.2vw, 2rem);
+			font-weight: 600;
+		}
+
+		.carousel-caption p {
+			font-size: clamp(0.9rem, 1.35vw, 1rem);
+			margin: 0;
+		}
+
+		.carousel-indicators button {
+			width: 26px;
+			height: 4px;
+			border-radius: 999px;
+		}
+
+		/* --- Rest of Page Styling --- */
+		.welcome-wrap {
+			margin-top: -44px;
+			padding: 0 0 18px;
+			position: relative;
+			z-index: 5;
+		}
+
+		.welcome-panel {
+			background: linear-gradient(135deg, #083a56, #0f6d93 55%, #11a0a0);
+			border: 1px solid rgba(255, 255, 255, 0.24);
+			border-radius: 18px;
+			padding: 26px 24px;
+			color: #f5fcff;
+			box-shadow: 0 16px 40px rgba(7, 45, 69, 0.2);
+		}
+
+		.welcome-chip {
+			display: inline-block;
+			padding: 5px 12px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.15);
+			border: 1px solid rgba(255, 255, 255, 0.28);
+			font-size: 0.8rem;
+			font-weight: 500;
+			margin-bottom: 10px;
+		}
+
+		.welcome-panel h1 {
+			margin: 0;
+			font-size: clamp(1.4rem, 2.8vw, 2.25rem);
+			font-weight: 700;
+			letter-spacing: 0.2px;
+		}
+
+		.welcome-panel p {
+			margin: 10px 0 0;
+			color: #dbf5ff;
+			max-width: 680px;
+		}
+
+		.welcome-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-top: 16px;
+		}
+
+		.btn-lite {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 9px 14px;
+			border-radius: 10px;
+			text-decoration: none;
+			font-weight: 600;
+			border: 1px solid rgba(255, 255, 255, 0.45);
+			color: #f2fbff;
+			background: rgba(255, 255, 255, 0.1);
+			transition: all 0.2s ease;
+		}
+
+		.btn-lite:hover {
+			background: rgba(255, 255, 255, 0.2);
+			color: #ffffff;
+		}
+
+		.container1 {
+			background: transparent;
+			padding: 22px 0 18px;
+		}
+
+		.info-block {
+			background: var(--panel);
+			border: 1px solid #d7e8f4;
+			border-radius: 16px;
+			padding: 24px;
+			box-shadow: 0 10px 28px rgba(13, 54, 81, 0.08);
+			height: 100%;
+			transition: transform 0.25s ease;
+		}
+
+		.info-block:hover {
+			transform: translateY(-6px);
+		}
+
+		.info-block h4 {
+			color: var(--brand-dark);
+		}
+
+		.info-block p {
+			color: var(--muted);
+			margin: 0;
+		}
+		
+		.stats-wrap {
+			padding: 10px 0 60px;
+		}
+
+		.stat-pill {
+			background: linear-gradient(140deg, #ffffff, #edf7ff);
+			border: 1px solid #d7e8f4;
+			border-radius: 14px;
+			padding: 16px 18px;
+			text-align: center;
+			box-shadow: 0 8px 22px rgba(12, 58, 90, 0.08);
+		}
+
+		.stat-pill strong {
+			font-size: 1.35rem;
+			color: var(--brand-dark);
+		}
+
+		.stat-pill span {
+			display: block;
+			font-size: 0.88rem;
+			color: var(--muted);
+		}
+
+		.footer {
+			background: linear-gradient(120deg, #032136, #07314c);
+			color: white;
+			padding: 48px 0;
+		}
+		.footer ul { list-style: none; padding: 0; }
+
+		@media (max-width: 768px) {
+			.carousel-item img { height: 400px; }
+			.carousel-caption {
+				left: 8%;
+				right: 8%;
+				padding: 16px;
+				bottom: 10%;
+			}
+			.welcome-wrap { margin-top: -30px; }
+			.welcome-panel { padding: 20px 16px; }
+		}
+	</style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hms-ui-consistency.css" />
+    <link rel="stylesheet" href="hms-theme.css" />
+    <link rel="stylesheet" href="css/buttons.css">
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg hms-public-navbar sticky-top">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="Index2.html">
+				<img src="logo.png" width="40" height="40" alt="Logo" />
+				<h2 class="hms-brand-title">
+					<span class="brand-hms">HMS</span> <span class="brand-auto">Automanager</span>
+				</h2>
+			</a>
+			
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link active" href="Index2.html">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+					<li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+					<li class="nav-item"><a class="nav-link" href="Doctors_Profile.php">Doctors</a></li>
+					<li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+					<li class="nav-item"><a class="nav-link" href="contect.php">Contact Us</a></li>
+					<li class="nav-item nav-item-login"><a class="nav-link" href="Logins.html">Login</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="mainCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1453" class="d-block w-100" alt="Slide 1">
+				<div class="carousel-caption">
+					<h3>Modern Facilities</h3>
+					<p>Equipped with the latest medical technology for precision care.</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=1470" class="d-block w-100" alt="Slide 2">
+				<div class="carousel-caption">
+					<h3>Expert Medical Team</h3>
+					<p>Our specialists are dedicated to your health and recovery.</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1470" class="d-block w-100" alt="Slide 3">
+				<div class="carousel-caption">
+					<h3>Compassionate Care</h3>
+					<p>Providing a comfortable and supportive environment for all patients.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<section class="welcome-wrap">
+		<div class="container">
+			<div class="welcome-panel">
+				<span class="welcome-chip">Smart Hospital Management</span>
+				<h1>Better Care Starts With Better Coordination</h1>
+				<p>
+					HMS Automanager helps patients connect faster with doctors, services, and digital records in one smooth public portal.
+				</p>
+				<div class="welcome-actions">
+					<a class="btn-lite" href="Doctors_Profile.php">Find Doctors</a>
+					<a class="btn-lite" href="service.html">Explore Services</a>
+					<a class="btn-lite" href="Logins.html">Patient/Staff Login</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="container1">
+		<div class="container">
+			<div class="row text-center gy-4">
+				<div class="col-md-4">
+					<div class="info-block">
+						<h4>Health Tips</h4>
+						<p>Drink water, exercise daily, and sleep 7-8 hours to keep your body resilient.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="info-block">
+						<h4>Our Benefits</h4>
+						<p>Qualified doctors, digital records, online booking, and 24/7 emergency response.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="info-block">
+						<h4>Working Hours</h4>
+						<p>Mon-Fri: 08:00 - 18:00<br>Emergency Care: 24/7</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="stats-wrap">
+		<div class="container">
+			<div class="row g-3 text-center">
+				<div class="col-6 col-md-3"><div class="stat-pill"><strong>50+</strong><span>Expert Doctors</span></div></div>
+				<div class="col-6 col-md-3"><div class="stat-pill"><strong>15k+</strong><span>Patients Served</span></div></div>
+				<div class="col-6 col-md-3"><div class="stat-pill"><strong>24/7</strong><span>Emergency Support</span></div></div>
+				<div class="col-6 col-md-3"><div class="stat-pill"><strong>100%</strong><span>Digital Workflow</span></div></div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="container text-center">
+			<p>&copy; 2026 Hospital Automanager. All Rights Reserved.</p>
+		</div>
+	</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const carouselEl = document.getElementById('mainCarousel');
+			if (!carouselEl) return;
+			new bootstrap.Carousel(carouselEl, {
+				interval: 3200,
+				pause: false,
+				wrap: true,
+				touch: true
+			});
+		});
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Appointment Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+  background: linear-gradient(to right, #dcfbff, #fff1db);
+			font-family: Georgia, serif;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+    .form-container {
+      background: linear-gradient(to right, #f5fdff, #fffbf4);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 550px;
+    }
+
+    .form-title {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #00796b;
+    }
+
+    .form-label {
+      font-weight: bold;
+    }
+
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../hms-ui-consistency.css" />
+  <link rel="stylesheet" href="../hms-theme.css" />
+  <link rel="stylesheet" href="../css/buttons.css" />
+</head>
+
+<body>
+ 
+<div class="main-content">
+  <div class="form-container">
+    <h2 class="form-title">Appointment Form</h2>
+    <h3 style="color: rgb(0, 0, 0);">Contact Information</h3>
+    <hr>
+   
+      <form id="registrationForm">
+        <div class="mb-3">
+          <label class="form-label" for="Name">Name</label><br>
+          <input class="form-control" type="text" id="fullname" placeholder="Enter Your Name" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter Your Email" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone</label>
+          <input class="form-control" type="tel" id="number" name="phone" placeholder="Enter Your Phone Number"
+            pattern="[0-9]{10}" maxlength="10" required
+            oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,10);" />
+        </div>
+        <br />
+
+        <h3 style="color: rgb(0, 0, 0);">Appointment Information</h3>
+        <hr>
+
+        <div class="mb-3">
+          <label class="form-label" for="doctorSpec">Doctor Specialization</label>
+          <select class="form-select" id="doctorSpec" required>
+            <option value="" disabled selected>-- Select Doctor -- </option>
+            <optgroup label="Dentist">
+              <option>Dr. Neha Patel</option>
+
+            </optgroup>
+            <optgroup label="Ophthalmologist">
+              <option>Dr. Aarav Mehta</option>
+
+            </optgroup>
+            <optgroup label="Cardiologist">
+              <option>Dr. Karan Desai</option>
+              <option>Dr. Rajan Deshmukh</option>
+            </optgroup>
+            <optgroup label="General Physician">
+              <option>Dr. Sneha Kapoor</option>
+            </optgroup>
+            <optgroup label="Dermatologist">
+              <option>Dr. Karan Verma</option>
+            </optgroup>
+            <optgroup label="Orthopedic Surgeon">
+              <option>Dr. Rishabh Shah</option>
+              <option>Dr. Vikram Reddy </option>
+            </optgroup>
+            <optgroup label="Neurologist">
+              <option>Dr. Isha Patil </option>
+            </optgroup>
+            <optgroup label="Psychiatrist">
+              <option>Dr. Mohit Bansal</option>
+            </optgroup>
+            <optgroup label="Gynecologist">
+              <option>Dr. Ralul Vaghani</option>
+              <option>Dr. Mahesh Desai</option>
+            </optgroup>
+            <optgroup label="Oncologist">
+              <option>Dr. Neha Sinha </option>
+            </optgroup>
+          </select>
+
+
+
+        </div>
+        <div class="mb-3">
+          <label for="dob" class="form-label">Date</label>
+          <input type="date" class="form-control" id="date" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label d-block">Time Interval</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="time" id="morning" value="Morning" required>
+            <label class="form-check-label" for="Morning">Morning</label>
+          </div><br />
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="time" id="afternoon" value="Afternoon">
+            <label class="form-check-label" for="Afternoon">Afternoon</label>
+          </div><br />
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="time" id="Evening" value="Evening">
+            <label class="form-check-label" for="Evening">Evening</label>
+          </div><br />
+        </div>
+        <div>
+          <label class="form-label" for="Details">Details</label><br />
+          <textarea class="form-control" id="text" placeholder="Enter details for appointment" rows="3"></textarea>
+        </div>
+        <label class="form-label d-block">Would you agree to reschedule the appointment, if needed?</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="ask" id="Yes" value="Yes" required>
+          <label class="form-check-label" for="Yes">Yes</label>
+        </div><br />
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="ask" id="No" value="N0" required>
+          <label class="form-check-label" for="No">No</label>
+        </div><br /><br />
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary-action">Register</button>
+        </div>
+
+
+
+
+      </form>
+  </div>
+</div>
+  <!-- Bootstrap JS CDN (with Popper) -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+
+  <!-- JavaScript for password validation -->
+    <script>
+    const phoneInput = document.getElementById('number');
+    phoneInput.addEventListener('input', function () {
+      if (this.value.length > 10) {
+        alert("Phone number cannot exceed 10 digits!");
+        this.value = this.value.slice(0, 10);
+      }
+    });
+
+  </script>
+</body>
+
+</html>
+
+
+
+
+

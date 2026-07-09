@@ -1,0 +1,20 @@
+﻿:root {
+  --hms-primary: #0d6efd;
+}
+
+.hms-btn {
+  border-radius: 0.55rem;
+  font-weight: 600;
+}
+
+.hms-table thead th {
+  white-space: nowrap;
+}
+
+.activity-table-wrap .table {
+  min-width: 520px;
+}
+
+.dashboard-card.card {
+  border-radius: 0.8rem;
+}
